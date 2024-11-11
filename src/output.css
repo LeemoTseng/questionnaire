@@ -1,0 +1,117 @@
+@import "bootstrap.css";
+@import "bootstrap-grid.min.css";
+@import "bootstrap-utilities.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: #414241;
+  background: #fbfbfb;
+}
+
+.imgbox {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 350px;
+  overflow: hidden;
+}
+.imgbox img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.frame {
+  z-index: 1;
+  max-width: 990px;
+  margin: 0 auto;
+  padding: 0px 10px;
+}
+.frame .card {
+  background-color: white;
+  border: transparent;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+  max-width: 990px;
+  padding: 50px 40px;
+  margin-top: 130px;
+  margin-bottom: 200px;
+}
+@media screen and (max-width: 640px) {
+  .frame .card {
+    padding: 20px 20px;
+  }
+}
+.frame .card .greeting {
+  color: #414241;
+}
+.frame .card .greeting p {
+  line-height: 24px;
+  text-align: justify;
+  color: #6e6e6e;
+}
+.frame .card .line {
+  border-top: 1px solid #414241;
+  margin: 20px 0;
+}
+.frame .card .form .question {
+  padding: 30px 0px;
+  border-bottom: #dfdfdf solid 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #646464;
+  width: 100%;
+}
+.frame .card .form .question p {
+  color: #bababa;
+  font-size: 14px;
+}
+.frame .card .form .question .options label {
+  margin-right: 10px;
+  padding: 5px 10px;
+  line-height: 35px;
+  border-radius: 10px;
+  color: #959595;
+}
+.frame .card .form .question .options :hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+.frame .card .form .question .formWidth {
+  margin-top: 5px;
+  width: 60%;
+}
+@media screen and (max-width: 768px) {
+  .frame .card .form .question .formWidth {
+    width: 90%;
+  }
+}
+.frame .card .thank {
+  margin: 50px auto;
+  width: 100%;
+}
+.frame .card .thank h4 {
+  text-align: center;
+  color: #6e6e6e;
+}
+.frame .card .btnbox {
+  margin: 0 auto;
+}
+.frame .card .btnbox .submitBtn {
+  width: 150px;
+}
+.frame .card .warning {
+  display: none;
+  color: rgb(242, 114, 114);
+  text-align: center;
+  font-size: 14px;
+  margin-top: 0px;
+}
+
+/*# sourceMappingURL=output.css.map */

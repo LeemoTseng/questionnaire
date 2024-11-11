@@ -4,23 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Questionnaire2024</title>
-    <link rel="stylesheet" href="/assets/output.css" />
+    <link rel="stylesheet" href="src/output.css" />
   </head>
+  <style>
+    html,
+    body {
+      background-color: #e1e1e1;
+    }
+    .text {
+      width: 80%;
+      border-left: 5px solid #de9043;
+      padding-left: 20px;
+
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -80%);
+    }
+  </style>
 
   <body>
-    <div class="imgbox" style="height: 250px">
-      <img src="https://picsum.photos/600/400" alt="" />
-    </div>
-    <div class="frame">
-      <div class="card">
-        <div class="greeting">
-          <h2>Succesfully Submitted!</h2>
-          <div><p>Thanks for your comments</p></div>
-        </div>
+    <div class="text">
+      <h2>Succesfully Submitted!</h2>
+      <div>
+        <p>Thanks for your comments.</p>
       </div>
     </div>
-
-    <script src="/assets/bootstrap.min.js" defer></script>
-    <script src="/assets/output.js" type="module" defer></script>
   </body>
 </html>
