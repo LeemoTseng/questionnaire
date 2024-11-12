@@ -2,20 +2,87 @@
 // index
 //------------------//
 //$1. form
+//$Personal Info
+//$Questionnaire
 
 
 //------------------//
 // $1. form
 //------------------//
 
+// $Personal Info
 
+type personalInfo = {
+  id: number;
+  text: string;
+  placeholder: string;
+  isRequired: boolean;
+}
+
+function personalInfoItem(): personalInfo[] {
+  return [
+    {
+      id: 1,
+      text: "Company Name*",
+      placeholder: "Please enter your company name",
+      isRequired: true
+    }, {
+      id: 2,
+      text: "Name*",
+      placeholder: "Please enter your name",
+      isRequired: true
+    },
+    {
+      id: 3,
+      text: "Position",
+      placeholder: "Please enter your position",
+      isRequired: false
+    },
+    {
+      id: 4,
+      text: "Email*",
+      placeholder: "sample@email.com",
+      isRequired: true
+    },
+
+  ]
+}
+function renderPersonalInfo(questions: personalInfo[]): string {
+  return questions
+    .map(
+      (q) => `
+              <div class="infoQestion">
+              <label for="personalInfo${q.id}" class="form-label"
+                >${q.text}</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="personalInfo${q.id}"
+                placeholder="${q.placeholder}"
+              />
+              </div>  `
+    )
+    .join("");
+}
+
+// render personal info
+const info = document.querySelector<HTMLDivElement>("#info");
+if (info) {
+  // console.log(info);
+  const questions = personalInfoItem();
+  const infoHTML = renderPersonalInfo(questions);
+  info.innerHTML = infoHTML;
+}
+
+
+// $Questionnaire
 type Question = {
   id: number;
   text: string;
   description: string;
   options: number[];
 };
-
 
 function generateQuestionnaire(): Question[] {
   return [
@@ -69,8 +136,6 @@ function generateQuestionnaire(): Question[] {
     }
   ];
 }
-
-
 function renderQuestionnaire(questions: Question[]): string {
   return questions
     .map(
@@ -95,8 +160,9 @@ function renderQuestionnaire(questions: Question[]): string {
     .join("");
 }
 
+
 // render questions
-const form = document.querySelector("#form");
+const form = document.querySelector<HTMLDivElement>("#form");
 if (form) {
   const questions = generateQuestionnaire();
   const formHTML = renderQuestionnaire(questions);
@@ -124,7 +190,7 @@ const reasonsTemplate = `
 
 
 
-// console.log(document.querySelector("#question8"));
+
 const question8 = document.querySelector("#question8");
 if (question8) {
   question8.insertAdjacentHTML("beforeend", reasonsTemplate);
@@ -138,11 +204,11 @@ if (submitBtn) {
   submitBtn.addEventListener("click", (e: MouseEvent) => {
     let isValid: boolean = true;
 
+    // validate questions1~8
     const questions = document.querySelectorAll<HTMLDivElement>(".radioQuestion");
     questions.forEach((question) => {
       const questionId = question.getAttribute("id");
       if (questionId) {
-
         const selectedOption = question.querySelector<HTMLInputElement>(`input[type="radio"][name="${questionId}"]:checked`);
         const warning = question.querySelector<HTMLDivElement>(".warning");
 
@@ -150,12 +216,36 @@ if (submitBtn) {
           if (warning) warning.style.display = "block";
           isValid = false;
         } else {
-
           if (warning) warning.style.display = "none";
         }
       }
     });
 
+    // validate personal info
+    const personalInfoItems = personalInfoItem();
+    personalInfoItems.forEach((item) => {
+      if (item.isRequired) {
+        const input = document.querySelector<HTMLInputElement>(`#personalInfo${item.id}`);
+        if (input && input.value.trim() === "") {
+          input.style.borderColor = "red";
+          isValid = false;
+        } else if (input) {
+          input.style.borderColor = "";
+        }
+      }
+    });
+
+
+    const personalInfoInputs = document.querySelectorAll<HTMLInputElement>(".infoQestion input");
+    personalInfoInputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        if (input.value.trim() !== "") {
+          input.style.borderColor = "";
+        }
+      });
+    });
+
+    // all done!!
     if (!isValid) {
       e.preventDefault();
       console.log("未完成");
@@ -164,8 +254,8 @@ if (submitBtn) {
       window.location.href = "questionnaire-completed.html";
     }
   });
-
 }
+
 
 
 

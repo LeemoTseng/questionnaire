@@ -19,6 +19,64 @@ body {
     background: #fbfbfb;
 }
 
+.yourInfo {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+
+    width: 70%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 640px) {
+        width: 100%;
+    }
+
+
+    h5 {
+        color: #6e6e6e;
+        text-align: center;
+    }
+
+    label {
+        font-size: .9rem;
+        color: #6e6e6e;
+    }
+
+    input {
+        font-size: .9rem;
+        width: 100%;
+
+    }
+
+    ::placeholder {
+        color: #bebebe;
+    }
+}
+
+.info {
+    // background-color: #f2f2f2;
+
+    .infoQestion {
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+
+        label {
+            font-size: .9rem;
+            color: #6e6e6e;
+        }
+
+        input {
+            font-size: .9rem;
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        padding: 20px 20px;
+    }
+}
+
 .imgbox {
     position: absolute;
     top: 0;
@@ -42,7 +100,7 @@ body {
 
     .card {
         background-color: white;
-        border:transparent;
+        border: transparent;
         border-radius: 20px;
         box-shadow: 0px 0px 20px 0px rgba($color: #000000, $alpha: .1);
 

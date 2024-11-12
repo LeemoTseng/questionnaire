@@ -11,6 +11,53 @@ body {
   background: #fbfbfb;
 }
 
+.yourInfo {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  width: 70%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 640px) {
+  .yourInfo {
+    width: 100%;
+  }
+}
+.yourInfo h5 {
+  color: #6e6e6e;
+  text-align: center;
+}
+.yourInfo label {
+  font-size: 0.9rem;
+  color: #6e6e6e;
+}
+.yourInfo input {
+  font-size: 0.9rem;
+  width: 100%;
+}
+.yourInfo ::placeholder {
+  color: #bebebe;
+}
+
+.info .infoQestion {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+.info .infoQestion label {
+  font-size: 0.9rem;
+  color: #6e6e6e;
+}
+.info .infoQestion input {
+  font-size: 0.9rem;
+  width: 100%;
+}
+@media screen and (max-width: 640px) {
+  .info {
+    padding: 20px 20px;
+  }
+}
+
 .imgbox {
   position: absolute;
   top: 0;

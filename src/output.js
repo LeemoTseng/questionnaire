@@ -2,9 +2,53 @@
 // index
 //------------------//
 //$1. form
+//$Personal Info
+//$Questionnaire
 //------------------//
 // $1. form
 //------------------//
+// $Personal Info
+function personalInfoItem() {
+    return [
+        {
+            id: 1,
+            text: "Company Name*",
+            placeholder: "Please enter your company name",
+            isRequired: true
+        },
+        {
+            id: 2,
+            text: "Name*",
+            placeholder: "Please enter your name",
+            isRequired: true
+        },
+        {
+            id: 3,
+            text: "Position",
+            placeholder: "Please enter your position",
+            isRequired: false
+        },
+        {
+            id: 4,
+            text: "Email*",
+            placeholder: "sample@email.com",
+            isRequired: true
+        }
+    ];
+}
+function renderPersonalInfo(questions) {
+    return questions.map(function(q) {
+        return '\n              <div class="infoQestion">\n              <label for="personalInfo'.concat(q.id, '" class="form-label"\n                >').concat(q.text, '</label\n              >\n              <input\n                type="email"\n                class="form-control"\n                id="personalInfo').concat(q.id, '"\n                placeholder="').concat(q.placeholder, '"\n              />\n              </div>  ');
+    }).join("");
+}
+// render personal info
+var info = document.querySelector("#info");
+if (info) {
+    // console.log(info);
+    var questions = personalInfoItem();
+    var infoHTML = renderPersonalInfo(questions);
+    info.innerHTML = infoHTML;
+}
 function generateQuestionnaire() {
     return [
         {
@@ -155,8 +199,8 @@ function renderQuestionnaire(questions) {
 // render questions
 var form = document.querySelector("#form");
 if (form) {
-    var questions = generateQuestionnaire();
-    var formHTML = renderQuestionnaire(questions);
+    var questions1 = generateQuestionnaire();
+    var formHTML = renderQuestionnaire(questions1);
     form.innerHTML = formHTML;
     var allRadioButtons = document.querySelectorAll("input[type='radio']");
     allRadioButtons.forEach(function(radio) {
@@ -171,7 +215,6 @@ if (form) {
 }
 // add reasons input
 var reasonsTemplate = '      \n<div class="form-floating formWidth">\n  <textarea class="form-control" placeholder="" id="floatingTextarea2" style="height: 50px"></textarea>\n  <label for="floatingTextarea2">Reasons</label>\n</div>';
-// console.log(document.querySelector("#question8"));
 var question8 = document.querySelector("#question8");
 if (question8) {
     question8.insertAdjacentHTML("beforeend", reasonsTemplate);
@@ -181,6 +224,7 @@ var submitBtn = document.querySelector("#submit");
 if (submitBtn) {
     submitBtn.addEventListener("click", function(e) {
         var isValid = true;
+        // validate questions1~8
         var questions = document.querySelectorAll(".radioQuestion");
         questions.forEach(function(question) {
             var questionId = question.getAttribute("id");
@@ -195,6 +239,28 @@ if (submitBtn) {
                 }
             }
         });
+        // validate personal info
+        var personalInfoItems = personalInfoItem();
+        personalInfoItems.forEach(function(item) {
+            if (item.isRequired) {
+                var input = document.querySelector("#personalInfo".concat(item.id));
+                if (input && input.value.trim() === "") {
+                    input.style.borderColor = "red";
+                    isValid = false;
+                } else if (input) {
+                    input.style.borderColor = "";
+                }
+            }
+        });
+        var personalInfoInputs = document.querySelectorAll(".infoQestion input");
+        personalInfoInputs.forEach(function(input) {
+            input.addEventListener("input", function() {
+                if (input.value.trim() !== "") {
+                    input.style.borderColor = "";
+                }
+            });
+        });
+        // all done!!
         if (!isValid) {
             e.preventDefault();
             console.log("未完成");
