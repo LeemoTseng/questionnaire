@@ -79,7 +79,6 @@ function renderQuestionnaire(questions: Question[]): string {
         <h5>${q.text}</h5>
         <p>${q.description}</p>
         <div class="options">
-
           ${q.options
           .map(
             (option) => `
@@ -90,7 +89,6 @@ function renderQuestionnaire(questions: Question[]): string {
           .join("")}
         </div>
         <h6 class="warning">Please select an option.</h6>
-
       </div>
     `
     )
@@ -159,11 +157,9 @@ if (submitBtn) {
     });
 
     if (!isValid) {
-
       e.preventDefault();
       console.log("未完成");
     } else {
-
       console.log("完成");
       window.location.href = "questionnaire-completed.html";
     }

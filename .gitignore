@@ -1,4 +1,5 @@
-node_modules/
-helper/
+/node_modules
+node_modules
+/dist
 *.log
 

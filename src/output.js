@@ -147,9 +147,9 @@ function generateQuestionnaire() {
 }
 function renderQuestionnaire(questions) {
     return questions.map(function(q) {
-        return '\n      <div class="question radioQuestion" id="question'.concat(q.id, '">\n        <h5>').concat(q.text, "</h5>\n        <p>").concat(q.description, '</p>\n        <div class="options">\n\n          ').concat(q.options.map(function(option) {
+        return '\n      <div class="question radioQuestion" id="question'.concat(q.id, '">\n        <h5>').concat(q.text, "</h5>\n        <p>").concat(q.description, '</p>\n        <div class="options">\n          ').concat(q.options.map(function(option) {
             return '\n            <input type="radio" class="btn-check" id="question'.concat(q.id, "-option").concat(option, '" name="question').concat(q.id, '" value="').concat(option, '" autocomplete="off">\n            <label class="btn btn-white" for="question').concat(q.id, "-option").concat(option, '">').concat(option, "</label>\n            ");
-        }).join(""), '\n        </div>\n        <h6 class="warning">Please select an option.</h6>\n\n      </div>\n    ');
+        }).join(""), '\n        </div>\n        <h6 class="warning">Please select an option.</h6>\n      </div>\n    ');
     }).join("");
 }
 // render questions
