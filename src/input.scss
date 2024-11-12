@@ -19,6 +19,13 @@ body {
     background: #fbfbfb;
 }
 
+.imgbox {
+    border-bottom: 20px solid #fbfbfb;
+    img{
+        filter: blur(4px);
+    }
+}
+
 .yourInfo {
     display: flex;
     flex-direction: column;
